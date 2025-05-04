@@ -14,7 +14,7 @@ This project uses decision documents shared by the FIA after every race to deter
 All detailed folders and analysis files are in this Google Drive:  
 [Google Drive – Formula 1 Scraper Files](https://drive.google.com/drive/u/0/folders/1PMPUe7h7ya4IRPY8MhqS6okQuu6T8ySd)
 
-### 🧹 `fia-scraper-2024.ipynb`
+### 📓 `fia-scraper-2024.ipynb`
 The main scraper notebook that:
 - Extracts all decision documents from the FIA website for 2024
 - Downloads them as PDFs
