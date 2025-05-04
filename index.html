@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formula 1</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./index_files/css2" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url("https://use.typekit.net/twn5dyr.css");
+
+        body {
+            margin: 0;
+            font-size: 16px;
+            font-family: 'Fira Sans', sans-serif;
+            text-rendering: optimizeLegibility;
+        }
+
+        .content {
+            max-width: 640px;
+            margin: auto;
+        }
+
+        .header {
+            padding: 3em 0;
+        }
+
+        a {
+            color: #578e7e;
+        }
+
+        .footer {
+            background: #f4f4f4;
+            text-align: center;
+            font-size: 0.8em;
+            margin-top: 4em;
+            padding: 4em 0;
+        }
+
+        figure {
+            margin: 0;
+            padding-bottom: 1.2em;
+        }
+
+        figcaption {
+            font-size: 0.8em;
+            text-align: center;
+            margin-top: 0.5em;
+            color: #666;
+        }
+
+        h1 {
+            font-family: 'Poppins', serif;
+            font-weight: bold;
+            font-size: 3em;
+            line-height: 1.1;
+        }
+
+        .subhead {
+            font-family: 'Fira Sans', sans-serif;
+        }
+
+        .full-width figure {
+            text-align: center;
+        }
+
+        iframe,
+        img,
+        video {
+            max-width: 100%;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 0;
+            padding-bottom: 1.2em;
+        }
+
+        ul {
+            margin: 0;
+            padding-bottom: 1em;
+            line-height: 1.6;
+        }
+
+        iframe {
+            padding-bottom: 1.2em;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            background: #fff880;
+        }
+
+        .scrolly-container {
+            display: grid;
+            grid-template-columns: 40% 60%;
+        }
+
+        .steps {
+            position: relative;
+        }
+
+        .step {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            font-size: 1.2em;
+            border-left: 5px solid red;
+            background: #f9f9f9;
+            box-sizing: border-box;
+        }
+
+        .step h2 {
+            margin-top: 0;
+        }
+
+        .sticky-video {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        video {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.4em 0.9em;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-family: 'Russo One', sans-serif;
+            border: 2px solid;
+            display: inline-block;
+            backdrop-filter: blur(2px);
+        }
+
+        .tag.gp {
+            background-color: rgba(255, 30, 0, 0.15);
+            border-color: #FF1E00;
+            color: #FF1E00;
+        }
+
+        .tag.amount {
+            background-color: rgba(255, 128, 0, 0.15);
+            border-color: orange;
+            color: orange;
+        }
+
+        .tag.team {
+            background-color: rgba(150, 149, 198, 0.2);
+            /* E69F00 */
+            border-color: navy;
+            color: navy;
+        }
+
+        .arrow-down {
+            text-align: center;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+            font-size: 2rem;
+            color: #555;
+            /* Change to match your theme */
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(10px);
+            }
+
+            60% {
+                transform: translateY(5px);
+            }
+        }
+
+        /* margin on mobile */
+        @media (max-width: 640px) {
+            body {
+                font-size: 18px;
+            }
+
+            .content {
+                padding-left: 0.5em;
+                padding-right: 0.5em;
+            }
+        }
+    </style>
+    <style>
+        .with-image-bg,
+        .with-video-bg {
+            position: relative;
+            background-size: cover;
+            margin-bottom: 2em;
+
+            /* Center everything inside */
+            min-height: 70svh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* White text with a shadow */
+            color: white;
+            text-shadow: 0px 0px 30px black,
+                0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .with-image-bg {
+            background-image: url('hero_image.jpg');
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .video-background video {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .responsive-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 1em;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/" rel="preconnect">
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin="true">
+    <link href="./index_files/css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="header with-image-bg">
+        <div class="content">
+            <h1>Formula 1 Drivers Are Paying More Fines Than Ever, And They’re Not Happy About It
+            </h1>
+            <p class="subhead">Drivers are complaining that the fines are unnecessary. The FIA says it has valid reasons
+                for imposing them.
+            </p>
+        </div>
+    </div>
+    <div class="content">
+        <div class="byline">
+            <p>By <a href="https://hazel-gandhi.github.io/">Hazel Gandhi</a></p>
+        </div>
+        <p>Formula 1’s governing body, the Fédération Internationale de l'Automobile, or FIA, has been taking heat from
+            drivers for a few years now for its ways of penalizing them, including charging hefty monetary fines for
+            seemingly small infractions.
+        </p>
+        <p>The FIA has a strict set of rules and penalties it imposes on drivers for various infringements, right from
+            causing collisions and driving recklessly to wearing jewellery and cursing during races and press
+            conferences.
+        </p>
+        <p>The drivers’ association is not pleased with these rules that are being imposed more frequently now than
+            before. In 2024 alone, the FIA collected 260,000 euros in fines from drivers and teams, tripling their
+            collection from past years.
+        </p>
+        <div>
+            <object type="text/html" data="ai2html-output/chart-1.svg.html" width="100%" height="500px"
+                style="border: none; overflow: hidden;"></object>
+        </div>
+        <div class="content">
+            <p>Several drivers, however, disagree and maintain that not all of these penalties are required. During the
+                Singapore Grand Prix last year, Red Bull’s Max Verstappen was ordered by the FIA to perform an act of
+                “public interest” for using expletives to describe his car in a press conference.
+            </p>
+            <p>Following this, the Grand Prix Drivers Association (GDPA) representing all drivers addressed the
+                situation and asked to be treated like “adults” by the FIA and its President, Mohammed Ben Sulayem.
+                “With regards to swearing, there is a difference between swearing intended to insult others and more
+                casual swearing, such as you might use to describe bad weather, or indeed an inanimate object such as a
+                Formula 1 car, or a driving situation,” the statement on Instagram read.</p>
+            <p>Apart from Verstappen, other drivers too have received penalties for swearing in press conferences in the
+                form of monetary fines. Charles Leclerc was fined 5,000 euros for swearing in a press conference after
+                the Mexican Grand Prix last year, despite apologizing immediately.
+            </p>
+            <p>Other players too, have faced monetary fines for using inappropriate and sometimes offensive language.
+            </p>
+        </div>
+        <div>
+            <object type="text/html" data="ai2html-output/chart-2.svg.html" width="100%" height="580px"
+                style="border: none; overflow: hidden;"></object>
+        </div>
+        <div class="content">
+            <p>The FIA however, insists that these rules are important. “We have to differentiate between our sport —
+                motorsport — and rap music,” Ben Sulayem told motorsport.com in a statement last year. In a later
+                statement on Instagram, he revealed that the FIA is taking the drivers’ feedback into consideration and
+                looking to change rules related to swearing.
+            </p>
+            <p>Here are some other major reasons why drivers were forced by the FIA to pay up:
+            </p>
+        </div>
+        <p></p>
+        <p></p>
+    </div>
+    <div class="scrolly-container">
+        <!-- Left-hand side: one card visible at a time -->
+        <div class="steps">
+            <div class="step" data-step="0">
+                <div>
+                    <h2>CARLOS SAINZ</h2>
+                    <div class="tags">
+                        <span class="tag gp">2025 Suzuka Grand Prix</span>
+                        <span class="tag team">Team: Williams Racing</span>
+                        <span class="tag amount">Fine: €10,000</span>
+                    </div>
+                    <p>Carlos Sainz was fined €20,000 because he showed up to the
+                        national anthem 5 seconds late in Suzuka. Sainz was reportedly having stomach issues which
+                        caused the
+                        delay in his arrival. His fine was reduced by €10,000 after a doctor verified that he had
+                        stomach problems.</p>
+                    <p>He addressed the fine in a press interaction and said, "I think I am the
+                        biggest supporter of punctuality," and added, "...at the same time, I was 5 seconds late." He
+                        ended by saying, "I don't know if I'm going to get another fine for saying this, but shit
+                        happens."
+                    </p>
+                    <p>(Video Source: YouTube/ESPN)</p>
+                </div>
+            </div>
+
+            <div class="step" data-step="1">
+                <div>
+                    <h2>ALEXANDER ALBON</h2>
+                    <div class="tags">
+                        <span class="tag gp">2024 Azerbaijan Grand Prix</span>
+                        <span class="tag team">Team: Williams Racing</span>
+                        <span class="tag amount">Fine: €5,000</span>
+                    </div>
+                    <p>After a pit stop, a crew member left a cooling fan and dry ice on top of Albon's car, which he is
+                        then seen removing by himself outside the pit lane.</p>
+                    <p>(Video Source: YouTube)</p>
+                </div>
+            </div>
+            <div class="step" data-step="2">
+                <div>
+                    <h2>CHARLES LECLERC</h2>
+                    <div class="tags">
+                        <span class="tag gp">2024 Mexico Grand Prix</span>
+                        <span class="tag team">Team: Scuderia Ferrari</span>
+                        <span class="tag amount">Fine: €5,000</span>
+                    </div>
+                    <p>While speaking about trying to control his car during the race, Leclerc used
+                        "inappropriate language", and was fined despite apologizing immediately. He said, "Oh no, I
+                        don't
+                        want to join Max (Verstappen)", referring to the Red Bull driver's recent clash with the FIA for
+                        swearing during press interactions and facing community service for it.
+                    </p>
+                    <p>(Video Source: YouTube/Pit Lane Banter)</p>
+                </div>
+            </div>
+            <div class="step" data-step="3">
+                <div>
+                    <h2>PIERRE GASLY</h2>
+                    <div class="tags">
+                        <span class="tag gp"> 2024 Chinese Grand Prix</span>
+                        <span class="tag team">Team: Alpine</span>
+                        <span class="tag amount">Fine: €10,000</span>
+                    </div>
+                    <p>Gasly received a fine after trying to leave a pit stop before all his tires were fitted. The team
+                        later received a fine too for not instructing the driver well enough.</p>
+                    <p>(Video Source: YouTube)</p>
+                </div>
+            </div>
+            <div class="step" data-step="4">
+                <div>
+                    <h2>YUKI TSUNODA</h2>
+                    <div class="tags">
+                        <span class="tag gp">2024 Canadian Grand Prix</span>
+                        <span class="tag team">Team: Racing Bulls</span>
+                        <span class="tag amount">Fine: €10,000</span>
+                    </div>
+                    <p>Tsunoda was fined for being late to the national anthem before the race. Video shows him rushing
+                        to the track.</p>
+                    <p>(Video Source: TikTok)</p>
+                </div>
+            </div>
+            <div class="step" data-step="5">
+                <div>
+                    <h2>SERGIO PEREZ</h2>
+                    <div class="tags">
+                        <span class="tag gp">2024 Canadian Grand Prix</span>
+                        <span class="tag team">Team: Red Bull</span>
+                        <span class="tag amount">Fine: €25,000</span>
+                    </div>
+                    <p>Perez and the team were fined for continuing the race after the car was crashed, leaving debris
+                        on the race track and risking the safety of
+                        other players. Red Bull
+                        asked Perez to continue to ensure that their other player, Max Verstappen, maintained the lead
+                        and was not disturbed by the deployment of a safety car. Video shows the back of Perez's car,
+                        with a damanged rear wing.</p>
+                    <p>(Video Source: YouTube)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right-hand side: sticky video area -->
+        <div class="sticky-video">
+            <video id="f1-video" muted autplay playsinline controls></video>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/scrollama"></script>
+    <script>
+        const video = document.getElementById('f1-video');
+
+        const videoSources = [
+            ["videos/sainz.mp4"],
+            ["videos/alex.mp4"],
+            ["videos/leclerc.mp4"],
+            ["videos/gasly.mp4"],
+            ["videos/tsunoda.mp4"],
+            ["videos/perez-1.mp4"],
+        ];
+
+        const scroller = scrollama();
+
+        scroller
+            .setup({
+                step: ".step",
+                offset: 0.5,
+                debug: false
+            })
+            .onStepEnter(response => {
+                const index = +response.element.dataset.step;
+                const currentVideos = videoSources[index];
+                let currentVideoIndex = 0;
+
+                // Clear any previous event handlers to prevent stacking
+                video.onended = null;
+
+                function playNextVideo() {
+                    if (currentVideoIndex >= currentVideos.length) return;
+
+                    video.src = currentVideos[currentVideoIndex];
+                    video.load();
+                    video.play().catch(() => {
+                        console.log("Autoplay blocked");
+                    });
+
+                    video.onended = () => {
+                        currentVideoIndex++;
+                        playNextVideo();
+                    };
+                }
+
+                playNextVideo();
+            });
+        video.addEventListener('click', () => {
+            video.muted = false;
+            video.play();
+        });
+
+        window.addEventListener('scroll', () => {
+            const rect = video.getBoundingClientRect();
+            if (rect.bottom < 0 || rect.top > window.innerHeight) {
+                video.pause();
+            }
+
+        });
+    </script>
+    <div class="content">
+        <p></p>
+        <p></p>
+        <p>In general, the FIA has maintained that these fines are used for good. Nikolas Tombazis, another FIA official
+            emphasized how fines are used to strengthen the sport’s grassroots movements and make the sport more
+            accessible. “...all the money is spent on what is considered to be beneficial aspects, whether it is for
+            safety, for grassroots in motorsport, or sometimes other projects which are to do with road safety.” he told
+            motorsport.com.
+        </p>
+        <p>Monetary fines, despite adding up to a lot, form only one part of the penalties the FIA imposes. Drivers and
+            teams are subjected to penalties in different forms including time penalties, where extra seconds are added
+            to their finishing time, or a position penalty, where drivers are forced to start the race from a lower grid
+            position.
+        </p>
+        <p>Other penalties include monetary fines, suspension of Super Licenses, which are special licenses issued to F1
+            drivers, or disqualification.
+        </p>
+    </div>
+    <div>
+        <object type="text/html" data="ai2html-output/chart-3.svg.html" width="100%" height="700px"
+            style="border: none; overflow: hidden;"></object>
+    </div>
+    <div class="content">
+        <p>Drivers in general have demanded transparency in the process for imposing fines and other penalties. Mercedes
+            driver George Russell, who is a vocal critic of the FIA’s current system, said, “For us when we were hearing
+            from the FIA a couple of years ago, when they had the presidential elections, they were all about
+            transparency.”
+        </p>
+        <p>He added, “"About where the money was going to be reinvested in terms of grassroots racing, which we are all
+            in favour of. We just want the transparency, an understanding of what was promised from the beginning."
+        </p>
+    </div>
+    <div class="footer">
+        <div class="content">
+            <p>You can find the code for this project <a href="https://github.com/hazel-gandhi/childcare-ny">here</a>
+                and read more of my work <a href="https://hazel-gandhi.github.io/">here.</a>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<!-- <div id="hvaid-toggle-popover-icon" style="left: 2029px; right: unset; top: 1089px; bottom: unset;"><svg width="30"
+            height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="30" height="30" rx="15" fill="white"></rect>
+            <rect x="7" y="9.33002" width="3.96001" height="11.34" rx="1.98" fill="url(#paint0_linear_119_3134)"></rect>
+            <rect x="13.1393" y="6" width="3.96001" height="18" rx="1.98" fill="url(#paint1_linear_119_3134)"></rect>
+            <rect x="19.2786" y="9.33002" width="3.96001" height="11.34" rx="1.98" fill="url(#paint2_linear_119_3134)">
+            </rect>
+            <defs>
+                <lineargradient id="paint0_linear_119_3134" x1="8.98" y1="9.33002" x2="8.98" y2="20.67"
+                    gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#175CFF"></stop>
+                    <stop offset="1" stop-color="#3693F9"></stop>
+                </lineargradient>
+                <lineargradient id="paint1_linear_119_3134" x1="15.1193" y1="6" x2="15.1193" y2="24"
+                    gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#175CFF"></stop>
+                    <stop offset="1" stop-color="#3693F9"></stop>
+                </lineargradient>
+                <lineargradient id="paint2_linear_119_3134" x1="21.2586" y1="9.33002" x2="21.2586" y2="20.67"
+                    gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#175CFF"></stop>
+                    <stop offset="1" stop-color="#3693F9"></stop>
+                </lineargradient>
+            </defs>
+        </svg>
+    </div> -->

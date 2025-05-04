@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="exportSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 588.2 422">
+  <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+  <defs>
+    <style>
+      .st0, .st1, .st2, .st3 {
+        fill: none;
+      }
+
+      .st1 {
+        stroke: #e7e7e7;
+      }
+
+      .st4 {
+        font-family: RussoOne-Regular, 'Russo One';
+        font-size: 22px;
+      }
+
+      .st4, .st5, .st6, .st7, .st8 {
+        isolation: isolate;
+      }
+
+      .st5, .st6, .st9, .st10, .st8 {
+        font-family: Roboto-Medium, Roboto;
+        font-weight: 500;
+      }
+
+      .st5, .st10 {
+        font-size: 14px;
+      }
+
+      .st6 {
+        fill: #a2a2a2;
+      }
+
+      .st6, .st9 {
+        font-size: 12px;
+      }
+
+      .st8 {
+        fill: #181818;
+        font-size: 16px;
+      }
+
+      .st11 {
+        fill: #fff;
+      }
+
+      .st2 {
+        stroke: #181818;
+        stroke-linecap: square;
+      }
+
+      .st3 {
+        stroke: #ff1e00;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+
+      .st12 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="st0" width="618" height="422"/>
+    </clipPath>
+  </defs>
+  <rect class="st11" width="583.3" height="422"/>
+  <g class="st12">
+    <text class="st4" transform="translate(0 22)"><tspan x="0" y="0">The FIA Tripled Its Collections From Fines in 2024</tspan></text>
+    <text class="st8" transform="translate(0 49)"><tspan x="0" y="0">Total fines levied by Formula 1&apos;s governing body on drivers and competitors</tspan></text>
+    <line class="st1" y1="79.6" x2="569" y2="79.6"/>
+    <line class="st1" y1="137.5" x2="569" y2="137.5"/>
+    <line class="st1" y1="195.3" x2="569" y2="195.3"/>
+    <line class="st1" y1="253.2" x2="569" y2="253.2"/>
+    <line class="st1" y1="311.1" x2="569" y2="311.1"/>
+    <path id="Actual_Fine" class="st3" d="M16.8,230.9l103.1,68.2,103.4-40.4,103.1-30.2,103.1,41,103.1-204"/>
+    <text class="st9" transform="translate(12.7 386.1)"><tspan x="0" y="0">2019</tspan></text>
+    <text class="st9" transform="translate(111.8 386.2)"><tspan x="0" y="0">2020</tspan></text>
+    <text class="st9" transform="translate(211 386)"><tspan x="0" y="0">2021</tspan></text>
+    <text class="st9" transform="translate(310.2 386.4)"><tspan x="0" y="0">2022</tspan></text>
+    <text class="st9" transform="translate(409.3 386)"><tspan x="0" y="0">2023</tspan></text>
+    <text class="st9" transform="translate(508.5 386)"><tspan x="0" y="0">2024</tspan></text>
+    <line class="st2" x1="569" y1="369" y2="369"/>
+    <text/>
+    <text class="st6" transform="translate(537.5 78)"><tspan x="0" y="0">250,000 </tspan><tspan x="0" y="14.4">euros</tspan></text>
+    <text class="st6" transform="translate(537.5 134)"><tspan x="0" y="0">200K</tspan></text>
+    <text class="st6" transform="translate(537.5 190.9)"><tspan x="0" y="0">150K</tspan></text>
+    <text class="st6" transform="translate(537.5 248.3)"><tspan x="0" y="0">100K</tspan></text>
+    <text class="st6" transform="translate(537.5 308.9)"><tspan x="0" y="0">50K</tspan></text>
+    <text class="st6" transform="translate(537.5 363.1)"><tspan x="0" y="0">0</tspan></text>
+    <text class="st10" transform="translate(409.8 97.3)"><tspan x="0" y="0">Fines collected </tspan></text>
+    <g class="st7">
+      <text class="st5" transform="translate(2.5 416.9)"><tspan x="0" y="0">Source: FIA, Chart by Hazel Gandhi</tspan></text>
+    </g>
+  </g>
+  <text/>
+</svg>
