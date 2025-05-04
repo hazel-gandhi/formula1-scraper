@@ -132,12 +132,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
 
-        video {
+        .sticky-video video,
+        .sticky-video iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Makes it scale proportionally */
+        }
+
+        /* video {
             max-width: 100%;
             max-height: 100%;
-        }
+        } */
 
         .tags {
             display: flex;
@@ -257,6 +266,21 @@
             height: auto;
             display: block;
             margin-bottom: 1em;
+        }
+
+        #f1-video-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #f1-video-container iframe,
+        #f1-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
     <link href="https://fonts.googleapis.com/" rel="preconnect">
@@ -429,29 +453,22 @@
 
         <!-- Right-hand side: sticky video area -->
         <div class="sticky-video">
-            <video id="f1-video" muted autplay playsinline controls></video>
+            <div id="f1-video-container" muted autplay playsinline controls></div>
         </div>
     </div>
 
     <script src="https://unpkg.com/scrollama"></script>
     <script>
-        const video = document.getElementById('f1-video');
+        const videoContainer = document.getElementById('f1-video-container');
 
         // Correcting videoSources, using an array of Vimeo iframe embed strings
         const videoSources = [
-            `<div style="padding:177.78% 0 0 0;position:relative;">
-            <iframe src="https://player.vimeo.com/video/1081293810?h=8e89413233&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                    frameborder="0" 
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-                    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-                    title="sainz">
-            </iframe>
-        </div>`,
-            ["videos/alex.mp4"],
-            ["videos/leclerc.mp4"],
-            ["videos/gasly.mp4"],
-            ["videos/tsunoda.mp4"],
-            ["videos/perez-1.mp4"],
+            `<iframe title="vimeo-player" src="https://player.vimeo.com/video/1081293810?h=8e89413233" width="640" height="360" frameborder="0"    allowfullscreen></iframe>`,
+            `<iframe title="vimeo-player" src="https://player.vimeo.com/video/1081300567?h=dcda02a184" width="640" height="360" frameborder="0"    allowfullscreen></iframe>`,
+            `<iframe title="vimeo-player" src="https://player.vimeo.com/video/1081300615?h=212ee737ec" width="640" height="360" frameborder="0"    allowfullscreen></iframe>`,
+            `<iframe title="vimeo-player" src="https://player.vimeo.com/video/1081300601?h=c8e65e12a6" width="640" height="360" frameborder="0"    allowfullscreen></iframe>`,
+            `<iframe title="vimeo-player" src="https://player.vimeo.com/video/1081300666?h=9586d01217" width="640" height="360" frameborder="0"    allowfullscreen></iframe>`,
+            `<iframe title="vimeo-player" src="https://player.vimeo.com/video/1081300653?h=44b276570d" width="640" height="360" frameborder="0"    allowfullscreen></iframe>`,
         ];
 
         const scroller = scrollama();
@@ -465,32 +482,33 @@
             .onStepEnter(response => {
                 const index = +response.element.dataset.step;
                 const currentVideos = videoSources[index];
-                let currentVideoIndex = 0;
+                const container = document.getElementById("f1-video-container");
 
-                // Clear any previous event handlers to prevent stacking
-                video.onended = null;
+                container.innerHTML = ""; // clear previous content
 
-                function playNextVideo() {
-                    if (currentVideoIndex >= currentVideos.length) return;
+                if (typeof currentVideos === "string" && currentVideos.includes("iframe")) {
+                    // Insert iframe
+                    container.innerHTML = currentVideos;
+                } else {
+                    // Insert <video> tag for local files
+                    const video = document.createElement("video");
+                    video.setAttribute("controls", "true");
+                    video.setAttribute("playsinline", "true");
+                    video.setAttribute("autoplay", "true");
+                    video.setAttribute("muted", "false");
+                    video.style.width = "100%";
+                    video.style.height = "100%";
+                    video.style.objectFit = "cover";
 
-                    video.src = currentVideos[currentVideoIndex];
-                    video.load();
-                    video.play().catch(() => {
-                        console.log("Autoplay blocked");
-                    });
+                    const source = document.createElement("source");
+                    source.setAttribute("src", currentVideos[0]);
+                    source.setAttribute("type", "video/mp4");
 
-                    video.onended = () => {
-                        currentVideoIndex++;
-                        playNextVideo();
-                    };
+                    video.appendChild(source);
+                    container.appendChild(video);
                 }
-
-                playNextVideo();
             });
-        video.addEventListener('click', () => {
-            video.muted = false;
-            video.play();
-        });
+
 
         window.addEventListener('scroll', () => {
             const rect = video.getBoundingClientRect();
