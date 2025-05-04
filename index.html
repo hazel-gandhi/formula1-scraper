@@ -20,7 +20,7 @@
 
         body {
             margin: 0;
-            font-size: 16px;
+            font-size: 18px;
             font-family: 'Fira Sans', sans-serif;
             text-rendering: optimizeLegibility;
         }
@@ -114,7 +114,7 @@
             display: flex;
             align-items: center;
             padding: 2rem;
-            font-size: 1.2em;
+            font-size: 18px;
             border-left: 5px solid red;
             background: #f9f9f9;
             box-sizing: border-box;
@@ -184,13 +184,27 @@
             color: navy;
         }
 
-        .arrow-down {
-            text-align: center;
-            margin: 20px 0;
-            animation: bounce 2s infinite;
-            font-size: 2rem;
-            color: #555;
-            /* Change to match your theme */
+        .methodology-box {
+            border: 2px solid #ccc;
+            background-color: #f9f9f9;
+            padding: 2em;
+            margin: 4em auto;
+            max-width: 720px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .methodology-box h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .methodology-box a {
+            color: #0077cc;
+            text-decoration: underline;
         }
 
         @keyframes bounce {
@@ -501,10 +515,10 @@
                 } else {
                     // Insert <video> tag for local files
                     const video = document.createElement("video");
-                    video.setAttribute("controls", "true");
-                    video.setAttribute("playsinline", "true");
                     video.setAttribute("autoplay", "true");
-                    video.setAttribute("muted", "true");
+                    video.setAttribute("muted", "true");        // REQUIRED for autoplay
+                    video.setAttribute("playsinline", "true");  // Important for mobile
+                    video.setAttribute("controls", "true");
                     video.style.width = "100%";
                     video.style.height = "100%";
                     video.style.objectFit = "cover";
@@ -568,9 +582,62 @@
             in favour of. We just want the transparency, an understanding of what was promised from the beginning."
         </p>
     </div>
+    <div class="methodology-box">
+        <h2>Methodology</h2>
+        <p>The data for this story comes from the FIA’s website and decision documents:
+            href="https://www.fia.com/documents/championships/fia-formula-one-world-championship-14/season/season-2024-2043"
+            target="_blank">FIA 2024 decisions</p>
+
+        <p>The decision documents are PDFs released for every separate ruling or update provided by the FIA, segregated
+            according to the Grand Prix and year. The website has multiple dropdown menus and multiple PDFs within each
+            dropdown for every decision they have put out.</p>
+
+        <p>I began by using Playwright to first click on each Grand Prix’s dropdown menu one by one and identify the
+            PDFs. I looped through each dropdown and made a comprehensive list of all PDFs put out by the FIA in 2024. I
+            set up another loop to download the PDFs and store them in one folder on my computer.</p>
+
+        <p>After this, I used <a href="https://pypi.org/project/natural-pdf/" target="_blank">Jonathan Soma’s Natural
+                PDF</a>
+            , a library built on top of PDF
+            Plumber, to scrape each document. Every
+            PDF had a different structure, and I did not need all of them: for example, there were some documents that
+            just announced grid placements or ordered players to appear before stewards. I did not require those, I only
+            wanted documents that had decisions regarding penalties.</p>
+
+        <p>So I set up the scraper in a way where it loops through every PDF, looks for the text ‘No / Driver’ in it,
+            and if the text exists, it then scrapes that PDF and skips the rest. I chose the ‘No / Driver’ text because
+            all documents related to penalties started with this text.</p>
+
+        <p>While scraping the PDFs, I also appended every extracted element to a dictionary that had keys such as the
+            date of penalty, driver’s name, competitor name, fine amount, reason, fact, etc.</p>
+
+        <p>I repeated the same process for all years from 2019–2024 to calculate whether the FIA had increased its
+            collections of fines over the years.</p>
+
+        <p>For penalties other than fines, I created four main categories that I believe were representative of all the
+            types of penalties players received:</p>
+
+        <ul>
+            <li><strong>Time penalty</strong>: Includes stop-and-go penalties, time added to a player’s race time at the
+                end</li>
+            <li><strong>Position penalties</strong>: Includes a player being dropped to a different position on the
+                grid, starting the race from the pit lane</li>
+            <li><strong>Monetary fines</strong>: When a player or team is required to pay a pecuniary fine</li>
+            <li><strong>Disqualification</strong>: A player is disqualified from the race</li>
+        </ul>
+
+        <p>I had a few other less significant categories such as ‘Warnings’, which included reprimands, and ‘No Further
+            Action’, where a player had an infringement but was not penalized. A very small number of stray penalties
+            were categorized as ‘Other’. I did not include these in my analysis because I wanted to focus on penalties
+            that had some impact on a player’s race.</p>
+
+        <p>The data also does not include fines levied only on a Competitor (such as Mercedes, McLaren) and not a player
+            because these were very few in number and difficult to incorporate or detect in my scraper.</p>
+    </div>
     <div class="footer">
         <div class="content">
-            <p>You can find the code for this project <a href="https://github.com/hazel-gandhi/childcare-ny">here</a>
+            <p>You can find the code for this project <a
+                    href="https://github.com/hazel-gandhi/formula1-scraper">here</a>
                 and read more of my work <a href="https://hazel-gandhi.github.io/">here.</a>
         </div>
     </div>
