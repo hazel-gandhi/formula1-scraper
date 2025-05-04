@@ -437,8 +437,16 @@
     <script>
         const video = document.getElementById('f1-video');
 
+        // Correcting videoSources, using an array of Vimeo iframe embed strings
         const videoSources = [
-            ["videos/sainz.mp4"],
+            `<div style="padding:177.78% 0 0 0;position:relative;">
+            <iframe src="https://player.vimeo.com/video/1081293810?h=8e89413233&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+                    title="sainz">
+            </iframe>
+        </div>`,
             ["videos/alex.mp4"],
             ["videos/leclerc.mp4"],
             ["videos/gasly.mp4"],
@@ -495,18 +503,24 @@
     <div class="content">
         <p></p>
         <p></p>
-        <p>In general, the FIA has maintained that these fines are used for good. Nikolas Tombazis, another FIA official
+        <p>In general, the FIA has maintained that these fines are used for good. Nikolas Tombazis, another FIA
+            official
             emphasized how fines are used to strengthen the sport’s grassroots movements and make the sport more
             accessible. “...all the money is spent on what is considered to be beneficial aspects, whether it is for
-            safety, for grassroots in motorsport, or sometimes other projects which are to do with road safety.” he told
+            safety, for grassroots in motorsport, or sometimes other projects which are to do with road safety.” he
+            told
             motorsport.com.
         </p>
-        <p>Monetary fines, despite adding up to a lot, form only one part of the penalties the FIA imposes. Drivers and
-            teams are subjected to penalties in different forms including time penalties, where extra seconds are added
-            to their finishing time, or a position penalty, where drivers are forced to start the race from a lower grid
+        <p>Monetary fines, despite adding up to a lot, form only one part of the penalties the FIA imposes. Drivers
+            and
+            teams are subjected to penalties in different forms including time penalties, where extra seconds are
+            added
+            to their finishing time, or a position penalty, where drivers are forced to start the race from a lower
+            grid
             position.
         </p>
-        <p>Other penalties include monetary fines, suspension of Super Licenses, which are special licenses issued to F1
+        <p>Other penalties include monetary fines, suspension of Super Licenses, which are special licenses issued
+            to F1
             drivers, or disqualification.
         </p>
     </div>
@@ -515,12 +529,15 @@
             style="border: none; overflow: hidden;"></object>
     </div>
     <div class="content">
-        <p>Drivers in general have demanded transparency in the process for imposing fines and other penalties. Mercedes
-            driver George Russell, who is a vocal critic of the FIA’s current system, said, “For us when we were hearing
+        <p>Drivers in general have demanded transparency in the process for imposing fines and other penalties.
+            Mercedes
+            driver George Russell, who is a vocal critic of the FIA’s current system, said, “For us when we were
+            hearing
             from the FIA a couple of years ago, when they had the presidential elections, they were all about
             transparency.”
         </p>
-        <p>He added, “"About where the money was going to be reinvested in terms of grassroots racing, which we are all
+        <p>He added, “"About where the money was going to be reinvested in terms of grassroots racing, which we are
+            all
             in favour of. We just want the transparency, an understanding of what was promised from the beginning."
         </p>
     </div>
